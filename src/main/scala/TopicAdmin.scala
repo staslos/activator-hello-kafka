@@ -8,4 +8,8 @@ case class TopicAdmin(zkClient: ZkClient) {
   def createTopic(name: String, partitionNum: Int = 1, replicationFactor: Int = 1, config: Properties = new Properties()): Unit = {
     AdminUtils.createTopic(zkClient, name, partitionNum, replicationFactor, config)
   }
+
+  def deleteTopic(topicName: String) {
+    AdminUtils.deleteTopic(zkClient, topicName)
+  }
 }
