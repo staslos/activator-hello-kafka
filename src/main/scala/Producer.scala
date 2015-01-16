@@ -1,14 +1,12 @@
 import java.util.Properties
 
-import kafka.api._
 import kafka.producer.{ Producer => KafkaProducer }
 import kafka.producer._
-import kafka.consumer._
+
 
 case class Producer[A](topic: String) {
-  //TODO: will be replaced with typesafeCofig
-  val config = new ProducerConfig(KafkaConfig())
-  val producer = new KafkaProducer[A, A](config)
+  private val config = new ProducerConfig(KafkaConfig())
+  private val producer = new KafkaProducer[A, A](config)
 
   def send(message: A) = sendMessage(producer, keyedMessage(topic, message))
 

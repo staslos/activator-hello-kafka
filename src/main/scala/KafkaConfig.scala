@@ -15,6 +15,9 @@ trait KafkaConfig extends Properties {
     if (typesafeConfig.hasPath(key))
       put(key.replace(consumerPrefixWithDot, "").replace(producerPrefixWithDot, ""), typesafeConfig.getString(key))
   }
+
+  def getCustomString(key: String) = typesafeConfig.getString(key)
+  def getCustomInt(key: String) = typesafeConfig.getInt(key)
 }
 
 object KafkaConfig {
