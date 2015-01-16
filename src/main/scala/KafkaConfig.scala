@@ -7,9 +7,10 @@ trait KafkaConfig extends Properties {
 
   private val consumerPrefixWithDot = consumerPrefix + "."
   private val producerPrefixWithDot = producerPrefix + "."
-
   private val allKeys = Seq(groupId, zookeeperConnect, brokers, serializer, partitioner, requiredAcks)
-  private lazy val typesafeConfig = ConfigFactory.load()
+
+  lazy val typesafeConfig = ConfigFactory.load()
+
   allKeys.map { key =>
     if (typesafeConfig.hasPath(key))
       put(key.replace(consumerPrefixWithDot, "").replace(producerPrefixWithDot, ""), typesafeConfig.getString(key))
