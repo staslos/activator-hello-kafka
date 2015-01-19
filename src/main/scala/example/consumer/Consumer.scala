@@ -49,8 +49,15 @@ case class Consumer(topics: List[String]) {
 
     val fetchResponse = simpleConsumer.fetch(fetchRequest.build())
 
-    fetchResponse.data.values.flatMap{ topic =>
-      topic.messages.toList.map(mao => new String(mao.message.payload.array(), "UTF-8"))
+    fetchResponse.data.values.flatMap { topic =>
+      topic.messages.toList.map { mao =>
+        val payload =  mao.message.payload
+
+        //ugliest part of the code. Thanks to kafka
+        val data = Array.fill[Byte](payload.limit)(0)
+        payload.get(data)
+        new String(data)
+      }
     }
   }
 
