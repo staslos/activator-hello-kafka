@@ -1,3 +1,5 @@
+package example.utils
+
 import java.util.Properties
 
 import com.typesafe.config.ConfigFactory
@@ -29,7 +31,7 @@ object KafkaConfig {
   val groupId = s"$consumerPrefix.group.id"
   val zookeeperConnect = s"$consumerPrefix.zookeeper.connect"
 
-  //Producer keys
+  //example.producer.Producer keys
   val brokers = s"$producerPrefix.metadata.broker.list"
   val serializer = s"$producerPrefix.serializer.class"
   val partitioner = s"$producerPrefix.partitioner.class"

@@ -1,6 +1,7 @@
+package example.topic
 
 import scala.util.Random
-import ZookeeperUtils._
+import example.topic.ZookeeperUtils._
 
 object CreateTopicExample {
   def main(args: Array[String]): Unit = {

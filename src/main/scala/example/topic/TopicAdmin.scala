@@ -1,3 +1,5 @@
+package example.topic
+
 import java.util.Properties
 
 import kafka.admin.AdminUtils

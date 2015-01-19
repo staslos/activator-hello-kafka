@@ -1,6 +1,13 @@
+package example.topic
+
 import java.util.Properties
 
+import example.utils.KafkaConfig
+
+import scala.util.Random
+
 import kafka.utils.ZKStringSerializer
+import kafka.producer.{ Producer => KafkaProducer }
 import org.I0Itec.zkclient.ZkClient
 import org.I0Itec.zkclient.serialize.ZkSerializer
 

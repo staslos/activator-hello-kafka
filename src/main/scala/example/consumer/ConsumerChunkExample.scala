@@ -1,4 +1,4 @@
-import scala.util.Random
+package example.consumer
 
 object ConsumerChunkExample {
   def main(args: Array[String]): Unit = {

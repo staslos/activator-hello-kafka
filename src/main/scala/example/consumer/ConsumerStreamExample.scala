@@ -1,4 +1,4 @@
-import scala.util.Random
+package example.consumer
 
 object ConsumerStreamExample {
   def main(args: Array[String]): Unit = {

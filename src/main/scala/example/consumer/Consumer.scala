@@ -1,9 +1,12 @@
+package example
+package consumer
+
+import example.utils.KafkaConfig
 import kafka.consumer.{ Consumer => KafkaConsumer }
 import kafka.consumer._
 import kafka.serializer._
 import scala.collection.JavaConversions._
 import kafka.api._
- 
 
 case class Consumer(topics: List[String]) {
   private val kafkaConfig = KafkaConfig()
@@ -18,10 +21,10 @@ case class Consumer(topics: List[String]) {
   private val clientId = kafkaConfig.getCustomString("consumer.clientId")
 
   val simpleConsumer = new SimpleConsumer(
-    kafkaConfig.getCustomString("consumer.host"), 
-    kafkaConfig.getCustomInt("consumer.port"), 
-    kafkaConfig.getCustomInt("consumer.timeOut"), 
-    kafkaConfig.getCustomInt("consumer.bufferSize"), 
+    kafkaConfig.getCustomString("consumer.host"),
+    kafkaConfig.getCustomInt("consumer.port"),
+    kafkaConfig.getCustomInt("consumer.timeOut"),
+    kafkaConfig.getCustomInt("consumer.bufferSize"),
     clientId)
 
   def readStream(writer: String => Unit) = {

@@ -1,3 +1,4 @@
+import example.utils.KafkaConfig
 import org.scalatest.FunSuite
 
 class KafkaConfigSpec extends FunSuite {
@@ -8,7 +9,7 @@ class KafkaConfigSpec extends FunSuite {
     assert(config.getProperty("zookeeper.connect") == "localhost:2821")
   }
 
-  test("Producer config should be read") {
+  test("example.producer.Producer config should be read") {
     assert(config.getProperty("metadata.broker.list") == "broker1:9092,broker2:9092")
     assert(config.getProperty("serializer.class") == "kafka.serializer.StringEncoder")
     assert(config.getProperty("partitioner.class") == "example.producer.SimplePartitioner")

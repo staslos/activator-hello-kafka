@@ -1,7 +1,8 @@
+package example.producer
 
 object ProducerExample {
   def main(args: Array[String]): Unit = {
-    val topicName = 
+    val topicName =
       if(args.length == 0) "mali"
       else args(0)
 

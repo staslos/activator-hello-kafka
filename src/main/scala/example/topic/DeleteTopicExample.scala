@@ -1,7 +1,10 @@
-import ZookeeperUtils._
+package example.topic
+
+import example.topic.ZookeeperUtils._
 
 object DeleteTopicExample {
 
+  //Delete topic functionality is beta in 0.8.1
   def main(args: Array[String]): Unit = {
     var topicName = ""
 

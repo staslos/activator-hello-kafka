@@ -1,3 +1,5 @@
+package example.producer
+
 import scala.util.Random
 
 object ProducerStreamExample {
