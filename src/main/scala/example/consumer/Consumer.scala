@@ -8,7 +8,8 @@ import kafka.serializer._
 import scala.collection.JavaConversions._
 import kafka.api._
 
-case class Consumer(topics: List[String]) {
+case class Consumer(topics: List[String], partition: Int = 0, offset: Long = 0L, fetchSize: Int = 100 ) {
+
   private val kafkaConfig = KafkaConfig()
   private val config = new ConsumerConfig(kafkaConfig)
   private val consumer = KafkaConsumer.create(config)
@@ -40,7 +41,6 @@ case class Consumer(topics: List[String]) {
   }
 
   def readChunk() = {
-    val (partition, offset, fetchSize) = (0, 0L, 100)
 
     var fetchRequest = new FetchRequestBuilder().clientId(clientId)
     for(topic <- topics) {
