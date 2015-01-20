@@ -1,6 +1,6 @@
 package example.utils
 
-import KafkaConfig._
+import com.typesafe.config.ConfigFactory
 
 import twitter4j._
 import twitter4j.conf.ConfigurationBuilder
@@ -30,12 +30,12 @@ case class TwitterClient {
   def run = twitterStream.sample();
 }
 object TwitterClient {
-  val kafkaConfig = KafkaConfig()
+  val config = ConfigFactory.load()
 
-  val consumerKey = kafkaConfig.getCustomString("twitter.consumerKey")
-  val consumerSecret = kafkaConfig.getCustomString("twitter.consumerSecret")
-  val accessToken = kafkaConfig.getCustomString("twitter.accessToken")
-  val accessTokenSecret = kafkaConfig.getCustomString("twitter.accessTokenSecret")
+  val consumerKey = config.getString("twitter.consumerKey")
+  val consumerSecret = config.getString("twitter.consumerSecret")
+  val accessToken = config.getString("twitter.accessToken")
+  val accessTokenSecret = config.getString("twitter.accessTokenSecret")
 
   val cb = new ConfigurationBuilder()
   cb.setOAuthConsumerKey(consumerKey)
