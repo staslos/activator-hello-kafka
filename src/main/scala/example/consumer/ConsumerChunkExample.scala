@@ -8,9 +8,9 @@ object ConsumerChunkExample {
       args.toList
     }
 
-    val consumer = Consumer(topicNames)
+    val consumer = ChunkConsumer(topicNames)
 
-    val readResponse = consumer.readChunk()
+    val readResponse = consumer.read()
     println(readResponse)
   }
 }

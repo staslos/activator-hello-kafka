@@ -8,8 +8,8 @@ object ConsumerStreamExample {
       args.toList
     }
 
-    val consumer = Consumer(topicNames)
+    val consumer = StreamConsumer(topicNames)
 
-    consumer.readStream(println(_))
+    consumer.read().foreach(println)
   }
 }

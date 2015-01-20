@@ -8,11 +8,11 @@ object JsonConsumerExample {
       if(args.length == 0) "testTopicComplex"
       else args(0)
 
-    val consumer = Consumer(List(topicName))
+    val consumer = StreamConsumer(List(topicName))
 
     implicit val reads = Json.reads[Message]
 
-    consumer.readStream(println(_))
+    consumer.read().foreach(println)
   }
 }
 
