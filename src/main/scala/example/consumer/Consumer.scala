@@ -42,7 +42,7 @@ case class Consumer(topics: List[String], partition: Int = 0, offset: Long = 0L,
 
   def readChunk() = {
 
-    var fetchRequest = new FetchRequestBuilder().clientId(clientId)
+    val fetchRequest = new FetchRequestBuilder().clientId(clientId)
     for(topic <- topics) {
       fetchRequest.addFetch(topic, partition, offset, fetchSize)
     }
