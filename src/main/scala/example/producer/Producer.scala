@@ -18,7 +18,6 @@ case class Producer[A](topic: String) {
     }
   }
 
-
   private def keyedMessage(topic: String, message: A): KeyedMessage[A, A] = new KeyedMessage[A, A](topic, message)
   private def sendMessage(producer: KafkaProducer[A, A], message: KeyedMessage[A, A]) = producer.send(message)
 }

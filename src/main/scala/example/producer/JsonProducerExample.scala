@@ -5,7 +5,7 @@ import play.api.libs.json.Json
 object JsonProducerExample {
   def main(args: Array[String]): Unit = {
     val topicName =
-      if(args.length == 0) "testTopicComplex"
+      if(args.length == 0) "jsonTopic"
       else args(0)
 
     val producer = Producer[String](topicName)

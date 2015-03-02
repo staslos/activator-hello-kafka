@@ -22,8 +22,18 @@
             All the producer examples can be found under the package <pre>example.producer</pre> . Let's start with a simple producer by running:
             <pre><code>sbt runMain example.producer.ProducerExample</code></pre>
             Your messages will be published to <pre>testTopic</pre> topic each time you hit the enter key. If you want to see if the messages really sent,
-            you can do it by running: <pre><code>sbt runMain example.consumer.ConsumerChunkExample</code></pre> in another terminal. This will list all the messages
+            you can check it by running: <pre><code>sbt runMain example.consumer.ConsumerChunkExample</code></pre> in another terminal. This will list all the messages
             published to <pre>testTopic</pre> topic.
+
+            Please note that you need a running kafka cluster to run the examples. You need to update configuration file in
+            <pre><code>src/main/resources/application.conf</code></pre> and change these keys:
+            <pre><code>
+                consumer.zookeeper.connect = ""
+                consumer.host = ""
+                consumer.port = ""
+
+                producer.metadata.broker.list = ""
+            </code></pre>
         </p>
     </div>
 
@@ -49,10 +59,10 @@
             To publish a message your producer will need to know the address of at least one broker.<pre>metadata.broker.list</pre> key should be set
             so Kafka can get information about the cluster from these brokers.
 
-            Producers serialize messages before sending them. <pre>serializer.class</pre> must be set to tell producer which serializer to use.
+            Producers serialize messages before sending them. <pre>serializer.class</pre> config must be set to tell producer which serializer to use.
             Kafka defines some encoders to use for basic types like <pre>kafka.serializer.StringEncoder</pre> or <pre>kafka.serializer.DefaultEncoder</pre> .
             If you want to serialize custom classes you should create an encoder extending the <pre>kafka.serializer.Encoder</pre> trait. You'll need to define
-            a method to convert your message to <pre>Array[Byte]</pre>
+            a method to convert your message to <pre>Array[Byte]</pre>.
         </p>
 
         <p>
@@ -79,11 +89,10 @@
                 val consumer = kafka.consumer.Consumer.create(config)
             </code></pre>
 
-            Producers were sending messages as Array[Byte] if you remember so that's why we need to decode them on retrieve.
+            Received messages should be decoded first by using a decoder.
             Again <pre>kafka.serializer.StringDecoder</pre> and <pre>kafka.serializer.DefaultDecoder</pre> are already defined for basic types.
             If you need to work with custom types you should create a decoder extending the class <pre>kafka.serializer.Decoder</pre> to convert from <pre>Array[Byte]</pre> to your type.
 
-            Consuming a message <pre><code>
             </code></pre>
         </p>
     </div>
