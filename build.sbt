@@ -1,5 +1,3 @@
-name := """notification-kafka"""
-
 libraryDependencies ++= Seq(
   "org.apache.kafka" % "kafka_2.10" % "0.8.2.1"
       exclude("javax.jms", "jms")
